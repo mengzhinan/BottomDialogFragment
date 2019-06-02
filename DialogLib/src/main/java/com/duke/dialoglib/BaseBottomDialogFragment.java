@@ -66,7 +66,7 @@ abstract public class BaseBottomDialogFragment extends DialogFragment {
         if (layoutParams == null) {
             return;
         }
-        setStyle(STYLE_NO_FRAME, R.style.BottomDialogTheme);
+//        setStyle(STYLE_NO_FRAME, R.style.BottomDialogTheme);
         layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
         layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
 //        layoutParams.dimAmount = 0.0f;

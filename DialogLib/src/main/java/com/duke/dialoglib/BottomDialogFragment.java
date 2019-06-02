@@ -1,9 +1,14 @@
 package com.duke.dialoglib;
 
 import android.app.Dialog;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.view.Gravity;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 /**
  * @Author: duke
@@ -11,6 +16,19 @@ import android.view.WindowManager;
  * @Description:
  */
 public class BottomDialogFragment extends BaseBottomDialogFragment {
+    private TextView closeTV;
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        closeTV = view.findViewById(R.id.close);
+        closeTV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
+            }
+        });
+    }
 
     @Override
     protected int getLayoutId() {
@@ -47,8 +65,6 @@ public class BottomDialogFragment extends BaseBottomDialogFragment {
 //        window.getAttributes().windowAnimations = R.style.BottomDialogAnimation;
         //去除黑边
 //        window.setBackgroundDrawableResource(android.R.color.transparent);
-        dialog.setCanceledOnTouchOutside(true);
-        dialog.setCancelable(true);
         window.setAttributes(layoutParams);
     }
 

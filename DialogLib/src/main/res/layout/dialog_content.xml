@@ -5,11 +5,17 @@
     android:background="@drawable/dialog_view_bg"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/title"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="标题" />
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="关闭" />
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
