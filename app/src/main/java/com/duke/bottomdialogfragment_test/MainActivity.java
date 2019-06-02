@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.duke.dialoglib.DialogDemoActivity;
+import com.duke.dialoglib.DemoActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,6 +18,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        startActivity(new Intent(this, DialogDemoActivity.class));
+        startActivity(new Intent(this, DemoActivity.class));
     }
 }
