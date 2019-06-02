@@ -38,8 +38,8 @@ abstract public class BaseBottomDialogFragment extends DialogFragment {
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    public void onResume() {
+        super.onResume();
         Dialog dialog = getDialog();
         if (dialog != null && dialog.getWindow() != null && dialog.getWindow().getAttributes() != null) {
             reSetupDialog(dialog);
