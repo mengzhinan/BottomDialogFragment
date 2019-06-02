@@ -1,14 +1,7 @@
 package com.duke.dialoglib;
 
 import android.app.Dialog;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.DialogFragment;
 import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -17,24 +10,16 @@ import android.view.WindowManager;
  * @DateTime: 2019-06-02 17:24
  * @Description:
  */
-public class BottomDialogFragment extends DialogFragment {
+public class BottomDialogFragment extends BaseBottomDialogFragment {
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        // Set to adjust screen height automatically, when soft keyboard appears on screen
-//        getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-        View view = inflater.inflate(R.layout.dialog_content, container, false);
-        if (view != null) {
-            return view;
-        }
-        return super.onCreateView(inflater, container, savedInstanceState);
+    protected int getLayoutId() {
+        return R.layout.dialog_content;
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        Dialog dialog = getDialog();
+    protected void reSetupDialog(Dialog dialog) {
+//        super.reSetupDialog(dialog);
         if (dialog == null) {
             return;
         }
@@ -46,15 +31,25 @@ public class BottomDialogFragment extends DialogFragment {
         if (layoutParams == null) {
             return;
         }
+        setStyle(STYLE_NO_FRAME, R.style.BottomDialogTheme);
         layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
         layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
-        layoutParams.gravity = Gravity.BOTTOM;
-//        window.setGravity(Gravity.BOTTOM);
+//        layoutParams.dimAmount = 0.0f;
+        //设置透明度
+//        layoutParams.alpha = 0.5f;
+        // 设置对话框位置
+//        layoutParams.gravity = Gravity.BOTTOM;
+        window.setGravity(Gravity.BOTTOM);
         window.getDecorView().setPadding(10, 10, 10, 10);
         window.setBackgroundDrawableResource(android.R.color.transparent);
-        window.setWindowAnimations(R.style.BottomDialogWindowAnim);
-//        dialog.onWindowAttributesChanged(layoutParams);//设置点击外围解散
+        window.setWindowAnimations(R.style.BottomDialogAnimation);
+        //再次设置出现动画
+//        window.getAttributes().windowAnimations = R.style.BottomDialogAnimation;
+        //去除黑边
+//        window.setBackgroundDrawableResource(android.R.color.transparent);
         dialog.setCanceledOnTouchOutside(true);
+        dialog.setCancelable(true);
         window.setAttributes(layoutParams);
     }
+
 }

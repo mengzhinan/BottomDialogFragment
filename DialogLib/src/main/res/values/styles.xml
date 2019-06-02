@@ -1,49 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="BottomDialogWindowAnim" parent="android:Animation"> 
+    <style name="BottomDialogAnimation" parent="android:Animation"> 
         <item name="android:windowEnterAnimation">@anim/dialog_in_anim</item>
         <item name="android:windowExitAnimation">@anim/dialog_out_anim</item>
     </style>
 
-    <style name="DialogTheme" parent="@android:style/Theme.Dialog">
-        <!--Dialog的windowFrame框为无-->
+    <style name="BottomDialogTheme" parent="@android:style/Theme.Dialog">
+        <!--对话框的windowFrame框为无，无边框效果-->
         <item name="android:windowFrame">@null</item>
-        <!--是否浮现在activity之上-->
+        <!--是否浮现在 activity 之上-->
         <item name="android:windowIsFloating">true</item>
-        <!--是否半透明-->
+        <!--对话框是否半透明-->
         <item name="android:windowIsTranslucent">true</item>
-        <!--是否显示title-->
+        <!--是否显示对话框标题-->
         <item name="android:windowNoTitle">true</item>
-        <!--设置dialog的背景，（#00000000）-->
+        <!--设置对话框的背景，(#00000000)-->
         <item name="android:background">@android:color/transparent</item>
-        <!--显示区域背景是否透明，（#00000000）-->
+        <!--对话框显示区域背景是否透明，(#00000000)-->
         <item name="android:windowBackground">@android:color/transparent</item>
-        <!--就是用来控制灰度的值，当为1时，界面除了我们的dialog内容是高亮显示的，dialog以外的区域是黑色的，完全看不到其他内容，系统的默认值是0.5-->
+        <!--就是用来控制对话框以外的灰度值。-->
+        <!--当为1时，界面除了对话框内容是高亮，以外的区域是不透明的黑色。-->
+        <!--系统的默认值是0.5-->
         <item name="android:backgroundDimAmount">0.5</item>
-        <!--显示区域以外是否使用黑色半透明背景-->
+        <!--对话框显示区域以外是否使用黑色半透明背景-->
         <item name="android:backgroundDimEnabled">true</item>
-        <item name="android:padding">0dp</item>
-        <!--是否是全屏-->
+        <!--对话框是否是全屏-->
         <item name="android:windowFullscreen">false</item>
-        <item name="android:gravity">bottom</item>
-        <!--点击空白是否消失-->
-        <item name="android:windowCloseOnTouchOutside">true</item>
-        <!-- 边框 -->
-        <item name="android:windowFrame">@null</item>
-        <!-- 是否浮现在activity之上 -->
-        <item name="android:windowIsFloating">true</item>
-        <!-- 半透明 -->
-        <item name="android:windowIsTranslucent">true</item>
-        <!-- 无标题 -->
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:background">@android:color/transparent</item>
-        <!-- 背景透明 -->
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <!-- 模糊 -->
-        <item name="android:backgroundDimEnabled">true</item>
-        <!-- 遮罩层 -->
-        <item name="android:backgroundDimAmount">0.5</item>
+        <!--点击对话框空白区域是否消失-->
+        <!--<item name="android:windowCloseOnTouchOutside">true</item>-->
+        <!-- 进入和退出时的动画效果 -->
+        <!--<item name="android:windowAnimationStyle">@style/BottomDialogAnimation</item>-->
+        <!--对话框在屏幕中的位置，可在代码中设置-->
+        <!--<item name="android:gravity">bottom</item>-->
+        <!--对话框窗口的内容边距，可在代码中设置-->
+        <!--<item name="android:padding">0dp</item>-->
     </style>
 
 </resources>
