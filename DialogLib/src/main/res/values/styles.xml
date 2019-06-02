@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!--对话框入出动画-->
     <style name="BottomDialogAnimation" parent="android:Animation"> 
         <item name="android:windowEnterAnimation">@anim/dialog_in_anim</item>
         <item name="android:windowExitAnimation">@anim/dialog_out_anim</item>
     </style>
 
+    <!--对话框样式-->
     <style name="BottomDialogTheme" parent="@android:style/Theme.Dialog">
         <!--对话框的windowFrame框为无，无边框效果-->
         <item name="android:windowFrame">@null</item>

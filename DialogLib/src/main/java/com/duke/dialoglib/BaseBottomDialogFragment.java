@@ -82,7 +82,7 @@ abstract public class BaseBottomDialogFragment extends DialogFragment {
         layoutParams.y = 10; // 新位置Y坐标
 //        layoutParams.x = 10; // 新位置X坐标
         layoutParams.dimAmount = 0.5f;
-        //设置透明度
+        //设置对话框的透明度
 //        layoutParams.alpha = 0.5f;
         // 设置对话框位置
 //        layoutParams.gravity = Gravity.BOTTOM;

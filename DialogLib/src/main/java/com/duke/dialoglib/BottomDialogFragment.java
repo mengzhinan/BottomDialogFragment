@@ -1,16 +1,10 @@
 package com.duke.dialoglib;
 
 import android.app.Dialog;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.DisplayMetrics;
-import android.view.Gravity;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.TextView;
 
 /**
@@ -40,44 +34,44 @@ public class BottomDialogFragment extends BaseBottomDialogFragment {
 
     @Override
     protected void reSetupDialog(Dialog dialog) {
-//        super.reSetupDialog(dialog);
-        if (dialog == null) {
-            return;
-        }
-        Window window = dialog.getWindow();
-        if (window == null) {
-            return;
-        }
-        WindowManager.LayoutParams layoutParams = window.getAttributes();
-        if (layoutParams == null) {
-            return;
-        }
-
-        layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
-        layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
-        DisplayMetrics displayMetrics = getDisplayMetrics();
-        if (displayMetrics != null) {
-            layoutParams.width = displayMetrics.widthPixels - 20;
-        }
-//        layoutParams.x = 10; // 新位置X坐标
-        layoutParams.y = 10; // 新位置Y坐标
-        layoutParams.dimAmount = 0.5f;
-        //设置透明度
+        super.reSetupDialog(dialog);
+//        if (dialog == null) {
+//            return;
+//        }
+//        Window window = dialog.getWindow();
+//        if (window == null) {
+//            return;
+//        }
+//        WindowManager.LayoutParams layoutParams = window.getAttributes();
+//        if (layoutParams == null) {
+//            return;
+//        }
+//
+//        layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
+//        layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
+//        DisplayMetrics displayMetrics = getDisplayMetrics();
+//        if (displayMetrics != null) {
+//            layoutParams.width = displayMetrics.widthPixels - 20;
+//        }
+////        layoutParams.x = 10; // 新位置X坐标
+//        layoutParams.y = 10; // 新位置Y坐标
+//        layoutParams.dimAmount = 0.5f;
+//        //设置透明度
 //        layoutParams.alpha = 0.5f;
-        // 设置对话框位置
-//        layoutParams.gravity = Gravity.BOTTOM;
-        window.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
-        window.getDecorView().setPadding(10, 10, 10, 10);
-        //去除黑边
-        window.setBackgroundDrawableResource(android.R.color.transparent);
-        //去除系统自带的margin
-        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        window.setWindowAnimations(R.style.BottomDialogAnimation);
-
-        window.setAttributes(layoutParams);
-
-        dialog.setCancelable(true);
-        dialog.setCanceledOnTouchOutside(true);
+//        // 设置对话框位置
+////        layoutParams.gravity = Gravity.BOTTOM;
+//        window.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
+//        window.getDecorView().setPadding(10, 10, 10, 10);
+//        //去除黑边
+//        window.setBackgroundDrawableResource(android.R.color.transparent);
+//        //去除系统自带的margin
+//        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//        window.setWindowAnimations(R.style.BottomDialogAnimation);
+//
+//        window.setAttributes(layoutParams);
+//
+//        dialog.setCancelable(true);
+//        dialog.setCanceledOnTouchOutside(true);
     }
 
 }

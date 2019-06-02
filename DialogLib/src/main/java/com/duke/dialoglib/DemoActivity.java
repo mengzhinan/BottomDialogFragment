@@ -22,6 +22,7 @@ public class DemoActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //打开对话框
 //                bottomDialogFragment.show(getActivity().getSupportFragmentManager(), dialogFlag);
                 bottomDialogFragment.show(DemoActivity.this.getSupportFragmentManager(), BottomDialogFragment.class.getSimpleName());
             }
