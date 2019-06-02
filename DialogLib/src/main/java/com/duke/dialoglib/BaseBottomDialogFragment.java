@@ -1,11 +1,14 @@
 package com.duke.dialoglib;
 
 import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
+import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -20,6 +23,10 @@ import android.view.WindowManager;
  * @Description:
  */
 abstract public class BaseBottomDialogFragment extends DialogFragment {
+
+    public BaseBottomDialogFragment() {
+//        setStyle(STYLE_NO_FRAME, R.style.BottomDialogTheme);
+    }
 
     @Nullable
     @Override
@@ -66,22 +73,30 @@ abstract public class BaseBottomDialogFragment extends DialogFragment {
         if (layoutParams == null) {
             return;
         }
-//        setStyle(STYLE_NO_FRAME, R.style.BottomDialogTheme);
         layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
         layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
-//        layoutParams.dimAmount = 0.0f;
+        DisplayMetrics displayMetrics = getDisplayMetrics();
+        if (displayMetrics != null) {
+            layoutParams.width = displayMetrics.widthPixels - 20;
+        }
+        layoutParams.y = 10; // 新位置Y坐标
+//        layoutParams.x = 10; // 新位置X坐标
+        layoutParams.dimAmount = 0.5f;
         //设置透明度
 //        layoutParams.alpha = 0.5f;
         // 设置对话框位置
 //        layoutParams.gravity = Gravity.BOTTOM;
-        window.setGravity(Gravity.BOTTOM);
+        window.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
         window.getDecorView().setPadding(10, 10, 10, 10);
+
+        //去除黑边
         window.setBackgroundDrawableResource(android.R.color.transparent);
+        //去除系统自带的margin
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         window.setWindowAnimations(R.style.BottomDialogAnimation);
         //再次设置出现动画
 //        window.getAttributes().windowAnimations = R.style.BottomDialogAnimation;
-        //去除黑边
-//        window.setBackgroundDrawableResource(android.R.color.transparent);
+
         dialog.setCanceledOnTouchOutside(true);
         dialog.setCancelable(true);
         window.setAttributes(layoutParams);
@@ -90,10 +105,10 @@ abstract public class BaseBottomDialogFragment extends DialogFragment {
     /**
      * 获取屏幕宽、高
      *
-     * @param dialog 对话框
      * @return Display
      */
-    protected Display getWindowDisplay(Dialog dialog) {
+    protected DisplayMetrics getDisplayMetrics() {
+        Dialog dialog = getDialog();
         if (dialog == null) {
             return null;
         }
@@ -102,6 +117,12 @@ abstract public class BaseBottomDialogFragment extends DialogFragment {
             return null;
         }
         WindowManager windowManager = window.getWindowManager();
-        return windowManager.getDefaultDisplay();
+        Display display = windowManager.getDefaultDisplay();
+        if (display == null) {
+            return null;
+        }
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        display.getMetrics(displayMetrics);
+        return displayMetrics;
     }
 }
